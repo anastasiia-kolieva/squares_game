@@ -1,5 +1,5 @@
 import Board from './components/Board';
-import InfoBlock from './components/Board';
+import InfoBlock from './components/InfoBlock';
 
 import styles from './App.module.css';
 

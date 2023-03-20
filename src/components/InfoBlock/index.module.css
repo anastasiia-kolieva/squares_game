@@ -1,0 +1,20 @@
+.title{
+    font-family: var(--roboto-bold);
+    margin-bottom: 20px;
+}
+
+.rowsInfoWrapper .rowWrapper:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.rowWrapper{
+    border-radius: 3px;
+    background-color: var(--light-brown);
+    padding: 14px 6px;
+}
+
+.rowText{
+    font-family: var(--roboto-bold);
+    color: var(--brown);
+    font-size: 12px;
+}

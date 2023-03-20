@@ -1,0 +1,26 @@
+.root{
+    margin-right: 40px;
+}
+
+.selectWrapper{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.buttonStart{
+    border-radius: 10%;
+    border: 1px solid var(--blue);
+    font-family: var(--roboto-regular);
+    color: var(--white);
+    background-color: var(--blue);
+    text-transform: uppercase;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.buttonStart:hover {
+    border: 1px solid var(--blue);
+    background-color: var(--white);
+    color: var(--blue);
+}
