@@ -4,3 +4,7 @@
     margin: 0;
     cursor: pointer;
 }
+
+.tdHovered{
+    background-color: var(--light-blue);
+}

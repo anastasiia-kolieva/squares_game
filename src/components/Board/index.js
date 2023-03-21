@@ -1,32 +1,13 @@
-import Select from 'react-select'
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Select from 'react-select';
+import PropTypes from 'prop-types';
+
+import setBtnStartClick from '../../store/actions/setBtnStartClick';
 
 import Table from '../Table';
 
 import styles from './index.module.css';
-
-const options = [
-  { value: 5, label: 'Easy' },
-  { value: 10, label: 'Normal' },
-  { value: 15, label: 'Hard' }
-]
-
-// const options = [
-//   {
-//   "name": "Easy",
-//   "field": 5,
-//   "id": "1"
-//   },
-//   {
-//   "name": "Normal",
-//   "field": 10,
-//   "id": "2"
-//   },
-//   {
-//   "name": "Hard",
-//   "field": 15,
-//   "id": "3"
-//   }
-//   ]
 
 const selectStyles = {
   container: (styles) => ({ ...styles, marginRight: '20px' }),
@@ -61,9 +42,34 @@ const selectStyles = {
     fontSize: '12px',
     color: 'var(--black)'
   }),
-}
+};
 
-function Board() {
+function Board({ data }) {
+  const [options, setOptions] = useState([]);
+  const [selectedMode, setSelectedMode] = useState(5);
+  const [mode, setMode] = useState(5);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const modifiedOptions = data?.length > 0 && data?.map(({ field, name }) => {
+      return { 
+        value: field,
+        label: name
+      }
+    });
+    setOptions(modifiedOptions);
+  }, [data]);
+
+  const handleSelectMode = (choice) => {
+    setSelectedMode(choice?.value);
+    dispatch(setBtnStartClick(false));
+  };
+
+  const handleBtnClick = () => {
+    dispatch(setBtnStartClick(true));
+    setMode(selectedMode);
+  }
+
   return (
     <div className={styles.root}>
       <div className={styles.selectWrapper}>
@@ -71,12 +77,17 @@ function Board() {
           options={options}
           styles={selectStyles}
           placeholder='Pick mode'
+          onChange={handleSelectMode}
         />
-        <button className={styles.buttonStart}>start</button>
+        <button className={styles.buttonStart} onClick={handleBtnClick}>start</button>
       </div>
-      <Table/>
+      <Table mode={mode} />
     </div>
   );
-}
+};
+
+Board.propTypes = {
+  data: PropTypes.array
+};
 
 export default Board;

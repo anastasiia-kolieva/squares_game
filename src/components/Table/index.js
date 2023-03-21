@@ -1,17 +1,27 @@
+import PropTypes from 'prop-types';
+
 import Row from '../Row';
 
 import styles from './index.module.css';
 
-const count = 5;
-
-function Table() {
+function Table({ mode }) {
     return (
         <table className={styles.table}>
           <tbody>
-                {[...Array(count)].map(( _ , i) => <Row key={i}/>)}
+              {[...Array(mode)].map(( _ , i) =>
+                <Row
+                  key={i}
+                  mode={mode}
+                  row={i+1}
+                />)}
           </tbody>
         </table>
     );
-  }
+};
+
+Table.propTypes = {
+  mode: PropTypes.number
+};
   
-  export default Table;
+export default Table;
+  
