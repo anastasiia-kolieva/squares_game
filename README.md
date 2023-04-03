@@ -1,6 +1,6 @@
 In this project were used HTML, CSS, JS, React, Redux, react-select, prop-types and classnames.
 
-Presets for app mode you can fetch using this endpoint https://60816d9073292b0017cdd833.mockapi.io/modes.
+Presets for app mode were fetched using this endpoint https://60816d9073292b0017cdd833.mockapi.io/modes.
 
 This data is array of objects with field:
 field - contain size of app field. Should be square form
